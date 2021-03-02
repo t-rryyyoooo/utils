@@ -35,8 +35,12 @@ def main():
     image_array = sitk.GetArrayFromImage(image)
     image_array = np.array([[0, 1, 2], [3, 4, 5]])
 
-    cac = CoordinateArrayCreater(image_array, center=(0,0))
+    cac = CoordinateArrayCreater(image_array, center=(1, 2))
     cac.execute()
+    c = cac.getCoordinate()
+    print(c[:, 0,0])
+    print(c[:, 1,2])
+
 
 if __name__ == "__main__":
     main()
