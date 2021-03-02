@@ -5,11 +5,18 @@ import re
 import requests
 from secret import token
 
-def isMasked(array):
+def isMasked(img_or_array):
+    if isinstance(img_or_array, sitk.Image):
+        array = sitk.GetArrayFromImage(img_or_array)
+
+    elif isinstance(img_or_array, np.ndarray):
+        array = img_or_array
+
     if (array > 0).any():
         return True
     else:
         return False
+
 
 def sendToLineNotify(message):
     line_notify_api = "https://notify-api.line.me/api/notify"

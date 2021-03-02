@@ -7,7 +7,9 @@ class CoordinateArrayCreater():
         assert len(center) == len(image_array.shape)
         self.image_array = image_array
         self.center = np.tile(center, image_array.shape)
-        self.center = self.center.reshape(-1, *image_array.shape)
+        self.center = self.center.reshape(*image_array.shape, -1)
+        s = np.arange(image_array.ndim)
+        self.center = self.center.transpose(image_array.ndim, *s)
 
 
     def execute(self):
