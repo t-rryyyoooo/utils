@@ -28,8 +28,8 @@ def sendToLineNotify(message):
     else:
         print("Failed to send")
 
-def getSizeFromString(string, digit=3):
-    matchobj = re.match("([0-9]+)-" * (digit - 1) + "([0-9]+)", string)
+def getSizeFromString(string, digit=3, link="-"):
+    matchobj = re.match(("([0-9]+)" + link) * (digit - 1) + "([0-9]+)", string)
     if matchobj is None:
         print("[ERROR] Invalid size : {}.".format(string))
 
