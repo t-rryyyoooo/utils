@@ -41,18 +41,23 @@ def paddingForNumpy(image_array, lower_pad_size, upper_pad_size, mirroring=False
 
     if mirroring:
         mode = "symmetric"
-        const_values = None
+        padded_image_array = np.pad(
+                image_array, 
+                pad_width = pad_width,
+                mode=mode, 
+                )
     else:
         mode = "constant"
         if const_value is None:
             const_value = image_array.min()
 
-    padded_image_array = np.pad(
-            image_array, 
-            pad_width = pad_width,
-            mode=mode, 
-            constant_values = const_value
-            )
+        padded_image_array = np.pad(
+                image_array, 
+                pad_width = pad_width,
+                mode=mode, 
+                constant_values = const_value
+                )
+
 
     return padded_image_array
 

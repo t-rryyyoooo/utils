@@ -7,4 +7,11 @@ def DICE(trueLabel, result):
    
     return dice
 
+def recall(true, pred):
+    eps = 10**-9
+    tp_fn = true.sum()
+    tp    = ((true == pred) * true).sum()
 
+    score = tp / (tp_fn + eps)
+
+    return score
