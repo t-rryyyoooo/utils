@@ -28,6 +28,20 @@ def isMasked(img_or_array):
     else:
         return False
 
+def sitkReadImageElseNone(path):
+    if path is None:
+        return None
+    else:
+        image = sitk.ReadImage(path)
+        return image
+
+def getSizeFromStringElseNone(string, digit=3, link="-"):
+    if string is None:
+        return None
+    else:
+        size = getSizeFromString(string, digit=digit, link=link)
+        return size
+
 def getSizeFromString(string, digit=3, link="-"):
     matchobj = re.match(("([0-9]+)" + link) * (digit - 1) + "([0-9]+)", string)
     if matchobj is None:
