@@ -1,5 +1,4 @@
 import numpy as np
-from sklearn.metrics import recall_score, precision_score 
 
 def DICE(trueLabel, result):
     intersection=np.sum(np.minimum(np.equal(trueLabel,result),trueLabel))
@@ -8,12 +7,11 @@ def DICE(trueLabel, result):
    
     return dice
 
-def recall(true_array: np.ndarray, pred_array: np.ndarray):
-    score = recall_score(true_array, pred_array, average="macro")
+def recall(true, pred):
+    eps = 10**-9
+    tp_fn = true.sum()
+    tp    = ((true == pred) * true).sum()
 
-    return score
-
-def precision(true_array: np.ndarray, pred_array: np.ndarray):
-    score = precision_score(true_array, pred_array, average=None)
+    score = tp / (tp_fn + eps)
 
     return score

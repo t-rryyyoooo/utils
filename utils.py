@@ -6,7 +6,6 @@ import os
 from decimal import Decimal, ROUND_HALF_UP
 import re
 import requests
-from secret import token
 
 def setSeed(seed: int = 42) -> None:
     np.random.seed(seed)
@@ -28,16 +27,6 @@ def isMasked(img_or_array):
         return True
     else:
         return False
-
-def sendToLineNotify(message):
-    line_notify_api = "https://notify-api.line.me/api/notify"
-    headers = {'Authorization': f'Bearer ' + token}
-    data = {"message" : message}
-    res = requests.post(line_notify_api, headers=headers, data=data)
-    if res.status_code == 200:
-        print("Suceeded in sending to Line Notify")
-    else:
-        print("Failed to send")
 
 def sitkReadImageElseNone(path):
     if path is None:
