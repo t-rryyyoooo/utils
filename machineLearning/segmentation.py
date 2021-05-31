@@ -28,7 +28,9 @@ class Segmenter():
             while input_array_list[i].ndim < self.ndim[i]:
                 input_array_list[i] = input_array_list[i][np.newaxis, ...]
 
-            input_array_list[i] = torch.from_numpy(input_array_list[i]).to(self.device, dtype=torch.float)
+            input_array_list[i] = torch.from_numpy(input_array_list[i]).float()#.to(self.device, dtype=torch.float)
+            for j in input_array_list:
+                print(j)
 
         segmented_array = self.model(*input_array_list)
         segmented_array = segmented_array.to("cpu").detach().numpy().astype(np.float)

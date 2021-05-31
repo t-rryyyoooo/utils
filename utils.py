@@ -5,12 +5,16 @@ import torch
 import os
 from decimal import Decimal, ROUND_HALF_UP
 import re
+<<<<<<< HEAD
 
 def printArgs(args):
     if not isinstance(args, dict):
         args = vars(args)
     for key in args.keys():
         print("{}: {}".format(key, args[key]))
+=======
+import requests
+>>>>>>> bbec69e550d9a91af27f62925a527e95738ec941
 
 def setSeed(seed: int = 42) -> None:
     np.random.seed(seed)
