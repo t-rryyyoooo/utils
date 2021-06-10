@@ -35,4 +35,16 @@ class PerimeterLabelArrayCreater():
 
         return count_array
 
+if __name__ == "__main__":
+    import SimpleITK as sitk
+    import sys
+    sys.path.append("..")
+    from utils import getImageWithMeta
+    img = sitk.ReadImage("/Users/tanimotoryou/Documents/lab/imageData/Abdomen/case_00/segmentation_resampled.nii.gz")
+    img_array = sitk.GetArrayFromImage(img)
+    plac = PerimeterLabelArrayCreater()
+    new_array = plac(img_array) * 300
+    print(new_array)
+    new = getImageWithMeta.(sitk.GetImageFromArray(new_array), img)
+    sitk.WriteImage(new, "/Users/tanimotoryou/Desktop/new.mha", True)
 
