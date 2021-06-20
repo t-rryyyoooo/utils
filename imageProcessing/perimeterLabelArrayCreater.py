@@ -44,7 +44,10 @@ if __name__ == "__main__":
     img_array = sitk.GetArrayFromImage(img)
     plac = PerimeterLabelArrayCreater()
     new_array = plac(img_array) * 300
-    print(new_array)
-    new = getImageWithMeta.(sitk.GetImageFromArray(new_array), img)
-    sitk.WriteImage(new, "/Users/tanimotoryou/Desktop/new.mha", True)
+    print(new_array.shape)
+    for i in range(new_array.shape[0]):
+        print(new_array[i].shape)
+        new = getImageWithMeta(new_array[i], img)
+        print(new.GetSize())
+        sitk.WriteImage(new, "/Users/tanimotoryou/Desktop/new_{}.mha".format(i), True)
 
