@@ -19,7 +19,7 @@ class Predictor():
 
         segmented_array = self.model(*input_array_list)
         segmented_array = segmented_array.to("cpu").detach().numpy().astype(np.float)
-        segmented_array = np.squeeze(segmented_array)
+        segmented_array = np.squeeze(segmented_array, axis=0)
 
         return segmented_array
 

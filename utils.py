@@ -6,6 +6,14 @@ import os
 from decimal import Decimal, ROUND_HALF_UP
 import re
 
+def makeZeroImage(ref_image):
+    image = sitk.Image(ref_image.GetSize(), sitk.sitkInt8)
+    image.SetOrigin(ref_image.GetOrigin())
+    image.SetDirection(ref_image.GetDirection())
+    image.SetSpacing(ref_image.GetSpacing())
+
+    return image
+
 def printArgs(args):
     if not isinstance(args, dict):
         args = vars(args)
